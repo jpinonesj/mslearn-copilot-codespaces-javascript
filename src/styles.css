@@ -123,3 +123,73 @@ img.socialIcon {
   height: 30px;
   width: 30px;
 }
+
+#footer > div:first-child > a {
+  align-items: center;
+  animation: social-arrive 600ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  border-radius: 50%;
+  display: flex;
+  height: 48px;
+  justify-content: center;
+  position: relative;
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  width: 48px;
+}
+
+#footer > div:first-child > a:nth-child(2) { animation-delay: 70ms; }
+#footer > div:first-child > a:nth-child(3) { animation-delay: 140ms; }
+#footer > div:first-child > a:nth-child(4) { animation-delay: 210ms; }
+#footer > div:first-child > a:nth-child(5) { animation-delay: 280ms; }
+#footer > div:first-child > a:nth-child(6) { animation-delay: 350ms; }
+#footer > div:first-child > a:nth-child(7) { animation-delay: 420ms; }
+#footer > div:first-child > a:nth-child(8) { animation-delay: 490ms; }
+
+#footer > div:first-child > a::before {
+  border: 1px solid currentColor;
+  border-radius: inherit;
+  content: "";
+  inset: 0;
+  opacity: 0;
+  position: absolute;
+  transform: scale(0.65);
+  transition: opacity 220ms ease, transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+#footer img.socialIcon {
+  transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+#footer > div:first-child > a:hover,
+#footer > div:first-child > a:focus-visible {
+  transform: translateY(-5px);
+}
+
+#footer > div:first-child > a:hover::before,
+#footer > div:first-child > a:focus-visible::before {
+  opacity: 0.75;
+  transform: scale(1.15);
+}
+
+#footer > div:first-child > a:hover img,
+#footer > div:first-child > a:focus-visible img {
+  transform: rotate(-8deg) scale(1.12);
+}
+
+#footer > div:first-child > a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 5px;
+}
+
+@keyframes social-arrive {
+  from { opacity: 0; transform: translateY(18px) scale(0.8); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #footer > div:first-child > a,
+  #footer > div:first-child > a::before,
+  #footer img.socialIcon {
+    animation: none;
+    transition: none;
+  }
+}
